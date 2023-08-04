@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-file-upload',
@@ -9,7 +10,8 @@ export class FileUploadComponent {
   uploadObj: any = [];
   selectedFile: File | null = null;
   selectedFileBase64: string = '';
-  maxFileSizeInBytes = 1048576; // 1 MB (you can adjust this value as per your requirement)
+  maxFileSizeInBytes = 3100000; // 3 MB (you can adjust this value as per your requirement)
+  filesCount: number = 0;
 
   get selectedFileName(): string {
     return this.selectedFile ? this.selectedFile.name : '';
@@ -19,11 +21,17 @@ export class FileUploadComponent {
     const file = event.target.files[0];
     if (file) {
       if (file.size > this.maxFileSizeInBytes) {
-        console.log('File size exceeds the maximum allowed limit.');
-        return;
+        Swal.fire({
+          title: 'Error',
+          text: 'Maximun file limit 3 mb',
+          icon: 'error'
+        });
+
+        this.removeFile()
+      } else {
+        this.selectedFile = file;
+        this.encodeFileToBase64(file);
       }
-      this.selectedFile = file;
-      this.encodeFileToBase64(file);
     }
   }
 
@@ -32,9 +40,14 @@ export class FileUploadComponent {
     reader.onloadend = () => {
       const selectedFileBase64 = reader.result as string;
       // Here you can use this.selectedFileBase64 as needed (e.g., send it to the server).
-      this.uploadObj.push(selectedFileBase64);
-      console.log(this.uploadObj);
-      // Here you can send the Base64 string to your backend API or do any other processing.
+      let objFile = {
+        index: this.filesCount,
+        name: file.name,
+        size: file.size,
+        type: file.type,
+        fileContent: selectedFileBase64
+      };
+      this.uploadObj.push(objFile);
     };
     reader.readAsDataURL(file);
   }
