@@ -1,0 +1,15 @@
+<div class="file-upload-container">
+  <input type="file" (change)="onFileSelected($event)" #fileInput accept=".png, .jpg, .jpeg, .xls, .xlsx" hidden/>
+  <mat-form-field appearance="outline" *ngIf="!selectedFile">
+    <mat-label>Choose a file</mat-label>
+    <mat-icon matPrefix>attach_file</mat-icon>
+    <input matInput placeholder="No file chosen" [value]="selectedFileName" readonly />
+    <mat-icon matSuffix (click)="fileInput.click()">folder</mat-icon>
+  </mat-form-field>
+  <div class="selected-file" *ngIf="selectedFile">
+    <p>Selected file: {{ selectedFile.name }}</p>
+    <button mat-icon-button color="warn" (click)="removeFile()">
+      <mat-icon>cancel</mat-icon>
+    </button>
+  </div>
+</div>
