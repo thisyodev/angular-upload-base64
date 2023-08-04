@@ -16,3 +16,14 @@
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+
+/* Example styles: */
+.mat-form-field {
+  width: 200px;
+}
+
+/* Custom styles for the clock icon */
+.mat-icon {
+  font-size: 18px;
+  cursor: pointer;
+}

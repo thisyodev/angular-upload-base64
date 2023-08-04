@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { FormControl } from "@angular/forms";
 import Swal from 'sweetalert2';
 
 @Component({
@@ -12,6 +13,8 @@ export class FileUploadComponent {
   selectedFileBase64: string = '';
   maxFileSizeInBytes = 3100000; // 3 MB (you can adjust this value as per your requirement)
   filesCount: number = 0;
+  startTime: string = "";
+  time: any;
 
   get selectedFileName(): string {
     return this.selectedFile ? this.selectedFile.name : '';
@@ -60,5 +63,9 @@ export class FileUploadComponent {
     if (fileInput) {
       fileInput.value = '';
     }
+  }
+
+  onChangeHour(event){
+    console.log(event);
   }
 }
