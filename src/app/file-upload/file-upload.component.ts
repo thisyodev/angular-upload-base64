@@ -50,6 +50,7 @@ export class FileUploadComponent {
       this.uploadObj.push(objFile);
     };
     reader.readAsDataURL(file);
+    // console.log(this.uploadObj)
   }
 
   removeFile() {

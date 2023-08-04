@@ -1,6 +1,6 @@
 .file-upload-container {
   display: flex;
-  flex-direction: column;
+  flex-direction: initial;
 }
 
 .selected-file {
