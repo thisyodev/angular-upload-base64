@@ -1,0 +1,56 @@
+<mat-toolbar class="custom-toolbar">
+  <p>Administrator</p>
+  <div class="row">
+    <div class="col-12">
+
+      <button mat-button [matMenuTriggerFor]="menu" #menuTrigger="matMenuTrigger" (mouseenter)="menuTrigger.openMenu()">Menu</button>
+      <mat-menu #menu="matMenu">
+        <div (mouseleave)="menuTrigger.closeMenu()">
+          <button mat-menu-item routerLinkActive="active" >Profile</button>
+        </div>
+      </mat-menu>`
+
+
+      <mat-card-header>
+        <div mat-card-avatar>
+          <i class="far fa-user-circle" style="font-size: 30px; vertical-align: middle; color: #8dc63f;"></i>
+        </div>
+        <mat-card-title>
+          <b style="color: #8dc63f; font-size: 16px;"> Admin(Username)
+            <span>
+              <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="home" style="font-size: 30px; vertical-align: middle; color: #8dc63f;"></mat-icon>
+              <i class="fa fa-cog icon-cog" [matMenuTriggerFor]="menu" #menuTrigger="matMenuTrigger" (mouseenter)="menuTrigger.openMenu()"></i>
+            </span>
+          </b>
+        </mat-card-title>
+        <mat-menu #menu="matMenu" [overlapTrigger]="false">
+          <div (mouseleave)="menuTrigger.closeMenu()">
+              <button mat-menu-item routerLinkActive="active" >Profile</button>
+          </div>
+        </mat-menu>
+      </mat-card-header>
+    </div>
+  </div>
+</mat-toolbar>
+
+<div class="basic-container">
+    <mat-tab-group>
+        <mat-tab label="Refer Customer">
+            <ng-template matTabContent>
+                <p>Refer Customer</p>
+            </ng-template>
+        </mat-tab>
+
+        <mat-tab label="Refer User">
+            <ng-template matTabContent>
+                <p>Refer User</p>
+            </ng-template>
+        </mat-tab>
+
+        <mat-tab label="User Admin Management">
+            <ng-template matTabContent>
+                <p>User Admin Management</p>
+            </ng-template>
+        </mat-tab>
+    </mat-tab-group>
+</div>

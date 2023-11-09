@@ -1,0 +1,36 @@
+.basic-container {
+  padding: 5px;
+}
+
+.custom-toolbar {
+  background-color: rgb(
+    209,
+    207,
+    207
+  ); /* Light gray background color for inactive tabs */
+  color: rgb(3, 3, 3); /* Dark gray text color for inactive tabs */
+  border-radius: 10px; /* Rounded top corners */
+  margin: 1px 7px 0px 7px;
+}
+
+/* Style the tab labels */
+.mat-tab-label {
+  background-color: rgb(
+    209,
+    207,
+    207
+  ); /* Light gray background color for inactive tabs */
+  color: rgb(0, 0, 0); /* Dark gray text color for inactive tabs */
+  border-radius: 10px 10px 10px 10px; /* Rounded top corners */
+  margin: 3px 3px 3px 3px;
+}
+
+/* Style the active tab label */
+.mat-tab-label.mat-tab-label-active {
+  background-color: rgb(
+    189,
+    189,
+    189
+  ); /* White background color for active tab */
+  color: rgb(0, 0, 0); /* font */
+}

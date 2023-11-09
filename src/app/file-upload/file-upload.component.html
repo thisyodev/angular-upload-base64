@@ -14,5 +14,10 @@
   </div>
 </div>
 
-<ngx-timepicker-field [format]="24" (timeChanged)="onChangeHour($event)">
-</ngx-timepicker-field>
+<br />
+<mat-form-field appearance="fill">
+  <mat-label>TIMEPICKER</mat-label>
+  <input matInput [ngxMatTimepicker]="picker" />
+  <ngx-mat-timepicker #picker></ngx-mat-timepicker>
+</mat-form-field>
+

@@ -1,7 +1,9 @@
 import { Component, ViewChild } from '@angular/core';
 import { FormControl } from "@angular/forms";
 import Swal from 'sweetalert2';
-
+// import * as _moment from 'moment';
+// import { default as _rollupMoment } from 'moment';
+// const moment = _rollupMoment || _moment;
 @Component({
   selector: 'app-file-upload',
   templateUrl: './file-upload.component.html',
@@ -15,6 +17,11 @@ export class FileUploadComponent {
   filesCount: number = 0;
   startTime: string = "";
   time: any;
+  customEndTime: any = {};
+
+  ngOnInit() {
+    console.log(this.customEndTime)
+  }
 
   get selectedFileName(): string {
     return this.selectedFile ? this.selectedFile.name : '';
