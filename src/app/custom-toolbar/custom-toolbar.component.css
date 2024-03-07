@@ -1,36 +1,96 @@
-.basic-container {
-  padding: 5px;
+.form-control {
+  border-radius: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.10);
+  background: #FFF;
+  box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.05);
+  font-size: 14px;
+
+  &.textarea {
+    height: auto;
+    min-height: 100px;
+  }
 }
 
-.custom-toolbar {
-  background-color: rgb(
-    209,
-    207,
-    207
-  ); /* Light gray background color for inactive tabs */
-  color: rgb(3, 3, 3); /* Dark gray text color for inactive tabs */
-  border-radius: 10px; /* Rounded top corners */
-  margin: 1px 7px 0px 7px;
+.form-control:focus,
+.form-check-input:focus {
+  border-radius: 5px;
+  border: 1px solid #6BBBF7;
+  background: #FFF;
+  box-shadow: 0px 0px 0px 3px rgba(107, 187, 247, 0.30), 0px 2px 2px 0px rgba(0, 0, 0, 0.05);
 }
 
-/* Style the tab labels */
-.mat-tab-label {
-  background-color: rgb(
-    209,
-    207,
-    207
-  ); /* Light gray background color for inactive tabs */
-  color: rgb(0, 0, 0); /* Dark gray text color for inactive tabs */
-  border-radius: 10px 10px 10px 10px; /* Rounded top corners */
-  margin: 3px 3px 3px 3px;
+.form-check-input:focus-visible,
+.form-control:focus-visible,
+.form-check-input:focus-visible {
+  outline-offset: unset;
+  outline: unset;
 }
 
-/* Style the active tab label */
-.mat-tab-label.mat-tab-label-active {
-  background-color: rgb(
-    189,
-    189,
-    189
-  ); /* White background color for active tab */
-  color: rgb(0, 0, 0); /* font */
+.label-header {
+  color: #484947;
+  font-size: 12px;
+  margin-bottom: 8px;
+  font-family: "Kanit-Regular", sans-serif !important;
+  line-height: 14px;
+}
+
+.red-star {
+  color: #D24E4E;
+  margin-left: 2px;
+}
+
+.card-user-buttom {
+  justify-content: flex-start;
+  align-items: flex-start;
+  display: flex;
+}
+
+.card-user-save-buttom {
+  flex: 1 1 0;
+  height: 39px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 7.50px;
+  padding-bottom: 7.50px;
+  background: #DEEDF3;
+  border-radius: 5px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  display: flex;
+
+  .save-buttom {
+    color: #53778B;
+  }
+
+  &:hover {
+    background: #C2D5DF;
+    box-shadow: 1px 1px 1px 0px #00000040;
+
+    .save-buttom {
+      color: #6F8EA1;
+    }
+  }
+}
+
+.content-image {
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.img-custom {
+  width: 100%;
+  max-width: 150px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 10px;
+  cursor: pointer;
+}
+
+form-control.is-invalid, .was-validated .form-control:invalid {
+    border-color: #dc3545;
+    padding-right: calc(1.5em + 0.75rem);
+    background-repeat: no-repeat;
+    background-position: center right calc(0.375em + 0.1875rem);
+    background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
 }

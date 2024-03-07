@@ -1,56 +1,119 @@
-<mat-toolbar class="custom-toolbar">
-  <p>Administrator</p>
-  <div class="row">
-    <div class="col-12">
-
-      <button mat-button [matMenuTriggerFor]="menu" #menuTrigger="matMenuTrigger" (mouseenter)="menuTrigger.openMenu()">Menu</button>
-      <mat-menu #menu="matMenu">
-        <div (mouseleave)="menuTrigger.closeMenu()">
-          <button mat-menu-item routerLinkActive="active" >Profile</button>
-        </div>
-      </mat-menu>`
-
-
-      <mat-card-header>
-        <div mat-card-avatar>
-          <i class="far fa-user-circle" style="font-size: 30px; vertical-align: middle; color: #8dc63f;"></i>
-        </div>
-        <mat-card-title>
-          <b style="color: #8dc63f; font-size: 16px;"> Admin(Username)
-            <span>
-              <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="home" style="font-size: 30px; vertical-align: middle; color: #8dc63f;"></mat-icon>
-              <i class="fa fa-cog icon-cog" [matMenuTriggerFor]="menu" #menuTrigger="matMenuTrigger" (mouseenter)="menuTrigger.openMenu()"></i>
-            </span>
-          </b>
-        </mat-card-title>
-        <mat-menu #menu="matMenu" [overlapTrigger]="false">
-          <div (mouseleave)="menuTrigger.closeMenu()">
-              <button mat-menu-item routerLinkActive="active" >Profile</button>
+<form [formGroup]="dynamicForm" (ngSubmit)="onSubmit()">
+  <div class="card m-3">
+    <h5 class="card-header">Angular 15 Dynamic Reactive Forms</h5>
+    <div class="card-body">
+      <div class="form-row">
+        <div class="d-flex align-items-center px-4 py-3">
+          <div class="ml-2">
+            <label>Number of Suggestion</label>
+            <select formControlName="numberOfSuggestion" class="form-control" (change)="onChangeTickets($event)"
+              [ngClass]="{ 'is-invalid': submitted && f.numberOfSuggestion.errors }">
+              <option value=""></option>
+              <option *ngFor="let i of [1, 2, 3]">
+                {{ i }}
+              </option>
+            </select>
+            <div *ngIf="submitted && f.numberOfSuggestion.errors" class="invalid-feedback">
+              <div *ngIf="f.numberOfSuggestion.errors.required">
+                Suggestion is required
+              </div>
+            </div>
           </div>
-        </mat-menu>
-      </mat-card-header>
+          <div class="ml-2">
+            <label>guidebook_name</label>
+            <input type="text" formControlName="guidebook_name" class="form-control" [ngClass]="{
+                            'is-invalid': submitted && f.guidebook_name.errors
+                          }" />
+            <div *ngIf="submitted && f.guidebook_name.errors" class="invalid-feedback">
+              <div *ngIf="f.guidebook_name.errors.required">
+                guidebook_name of tickets is required
+              </div>
+            </div>
+          </div>
+          <div class="ml-2">
+            <label class="label-header">Symptom: <span class="red-star">*</span></label>
+            <!-- <div class="col-6"> -->
+              <input type="text" formControlName="symptom" class="form-control" [ngClass]="{
+                'is-invalid': submitted && f.symptom.errors
+              }" />
+              <div *ngIf="submitted && f.symptom.errors" class="invalid-feedback">
+                <div *ngIf="f.symptom.errors.required">
+                  symptom of tickets is required
+                </div>
+              </div>
+            <!-- </div> -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <div *ngFor="let suggestion of t.controls; let i = index" class="list-group list-group-flush">
+      <div class="list-group-item">
+        <h5 class="card-title">suggestion {{ i + 1 }}</h5>
+        <div [formGroup]="suggestion" class="form-row">
+          <div class="form-group col-6">
+            <label>title_th</label>
+            <input type="text" formControlName="title_th" class="form-control" [ngClass]="{
+                'is-invalid': submitted && suggestion.controls.title_th.errors
+              }" />
+            <div *ngIf="submitted && suggestion.controls.title_th.errors" class="invalid-feedback">
+              <div *ngIf="suggestion.controls.title_th.errors.required">
+                title_th is required
+              </div>
+            </div>
+          </div>
+          <div class="col-12">
+            <label class="label-header">description_th: <span class="red-star">*</span></label>
+            <textarea formControlName="description_th" type="text" class="form-control textarea" cols="2" rows="2"
+              [ngClass]="{
+              'is-invalid': submitted && suggestion.controls.description_th.errors
+            }">
+            </textarea>
+            <div *ngIf="submitted && suggestion.controls.description_th.errors" class="invalid-feedback">
+              <div *ngIf="suggestion.controls.description_th.errors.required">
+                description_th is required
+              </div>
+            </div>
+          </div>
+          <div class="d-flex flex-row">
+            <div class="col">
+              <label>Image1</label>
+              <input type="file" formControlName="image1" class="form-control" [ngClass]="{'is-invalid': submitted && suggestion.controls.image1.errors}" />
+              <div *ngIf="submitted && suggestion.controls.image1.errors" class="invalid-feedback">
+                <div *ngIf="suggestion.controls.image1.errors.required">
+                  image1 is required
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <label>Image2</label>
+              <input type="file" formControlName="image2" class="form-control"
+                [ngClass]="{'is-invalid': submitted && suggestion.controls.image2.errors}" />
+              <div *ngIf="submitted && suggestion.controls.image2.errors" class="invalid-feedback">
+                <div *ngIf="suggestion.controls.image2.errors.required">
+                  image2 is required
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <label>Image 3</label>
+              <input type="file" formControlName="image3" class="form-control" />
+            </div>
+            <div class="col">
+              <label>Image 4</label>
+              <input type="file" formControlName="image4" class="form-control" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-footer text-center">
+      <button class="btn btn-primary mr-1">Buy Tickets</button>
+      <button class="btn btn-secondary mr-1" type="reset" (click)="onReset()">
+        Reset
+      </button>
+      <button class="btn btn-secondary" type="button" (click)="onClear()">
+        Clear
+      </button>
     </div>
   </div>
-</mat-toolbar>
-
-<div class="basic-container">
-    <mat-tab-group>
-        <mat-tab label="Refer Customer">
-            <ng-template matTabContent>
-                <p>Refer Customer</p>
-            </ng-template>
-        </mat-tab>
-
-        <mat-tab label="Refer User">
-            <ng-template matTabContent>
-                <p>Refer User</p>
-            </ng-template>
-        </mat-tab>
-
-        <mat-tab label="User Admin Management">
-            <ng-template matTabContent>
-                <p>User Admin Management</p>
-            </ng-template>
-        </mat-tab>
-    </mat-tab-group>
-</div>
+</form>
