@@ -1,6 +1,4 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FileUploadComponent } from './file-upload/file-upload.component';
@@ -24,7 +22,6 @@ import { ReactiveFormComponent } from './reactive-form/reactive-form.component';
   declarations: [AppComponent, FileUploadComponent, ChartjsComponent, CustomToolbarComponent, ReactiveFormComponent],
   imports: [
     CommonModule,
-    BrowserModule,
     BrowserAnimationsModule,
     MatButtonModule,
     MatInputModule,
