@@ -19,8 +19,9 @@ import { ChartjsComponent } from './chartjs/chartjs.component';
 import { NgxMatTimepickerModule } from 'ngx-mat-timepicker';
 import { CustomToolbarComponent } from './custom-toolbar/custom-toolbar.component';
 import { MatTabsModule } from '@angular/material/tabs';
+import { ReactiveFormComponent } from './reactive-form/reactive-form.component';
 @NgModule({
-  declarations: [AppComponent, FileUploadComponent, ChartjsComponent, CustomToolbarComponent],
+  declarations: [AppComponent, FileUploadComponent, ChartjsComponent, CustomToolbarComponent, ReactiveFormComponent],
   imports: [
     CommonModule,
     BrowserModule,
