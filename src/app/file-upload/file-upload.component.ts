@@ -1,6 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
-import { FormControl } from "@angular/forms";
-import Swal from 'sweetalert2';
+// import { FormControl } from "@angular/forms";
+import Swal from 'sweetalert2'
 // import * as _moment from 'moment';
 // import { default as _rollupMoment } from 'moment';
 // const moment = _rollupMoment || _moment;
