@@ -25,7 +25,7 @@
     "chartjs-plugin-annotation": "^1.4.0",
     "core-js": "^3.8.2",
     "mat-timepicker": "5.1.0",
-    "ngx-mat-timepicker": "^15.0.0",
+    "ngx-mat-timepicker": "~10.0.1",
     "rxjs": "~7.8.0",
     "sweetalert2": "^11.7.20",
     "tslib": "^2.3.0",
